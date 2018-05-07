@@ -11,3 +11,4 @@ $ yarn start
 - https://qiita.com/moomooya/items/00f89e425a3034b8ea14
 - https://qiita.com/hika7719/items/3282ab2ebcdaf080912e
 - http://furodrive.com/2017/02/crypto/
+- https://www.npmjs.com/package/express-session

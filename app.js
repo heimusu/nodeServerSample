@@ -43,10 +43,8 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: maxage * 60000 }}))
 // セッション管理関数
 const sessionCheck = (req, res, next) => {
   if (req.session.email) {
-    // next();
-    res.sendStatus(200)
+    next();
   } else {
-    // res.redirect('/login');
     res.status(440).json({message: 'セッション切れです'})
   }
 }
@@ -83,6 +81,7 @@ app.post('/login', (req, res, next) => {
 
 app.get('/', (req, res, next) => {
   sessionCheck(req, res, next)
+  res.sendStatus(200)
 })
 
 app.listen(3000, function(){
