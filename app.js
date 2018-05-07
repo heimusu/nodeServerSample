@@ -5,7 +5,6 @@ const path = require('path')
 const crypto = require('crypto')
 const bodyParser = require('body-parser')
 
-
 const app = express();
 app.use(express.static(__dirname));
 app.set('port', process.env.PORT || 3000);
@@ -32,23 +31,27 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-// 暗号化
+const email = 'heimusu@gmail.com'
+const password = 'hogehoge'
+
+// sha-512で暗号化
 const hashed = password => {
   let hash = crypto.createHmac('sha512', password)
   hash.update(password)
-  let value = hash.digest('hex')
+  const value = hash.digest('hex')
   return value;
 }
 
+// ログイン処理
 app.post('/login', (req, res, next) => {
-  const password = 'hogehoge'
-  const text = req.body.password
+  const reqEmail = req.body.email
+  const reqPass = req.body.password
   try {
-    if(hashed(password) === hashed(text)) {
+    if(email === reqEmail && hashed(password) === hashed(reqPass)) {
       res.send(200)
     }
     else {
-      res.status(401).json({message: 'パスワードが一致しません'})
+      res.status(401).json({message: 'メールアドレス/パスワードが一致しません'})
  
     }
   }
