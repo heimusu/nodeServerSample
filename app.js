@@ -1,14 +1,25 @@
-var express = require('express'),
-    oauth = require('oauth'),
-    http = require('http');
-var path = require('path');
+const express = require('express')
+const oauth = require('oauth')
+const http = require('http')
+const path = require('path')
 
 
-var app = express();
+const app = express();
 app.use(express.static(__dirname));
 app.set('port', process.env.PORT || 3000);
 
-app.get('/', function(req,res){
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/'));
+app.engine('htm', require('ejs').renderFile);
+app.engine('html', require('ejs').renderFile);
+
+
+app.get('/', function(req, res){
+  res.render('index.html');
+});
+
+
+app.get('/login', function(req,res){
   const result = {
     message: 'ok'
   }

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "ssh://git@github.com/heimusu/nodeServerSample.git",
-  "author": "久保陽一郎 <kubo_yoichiro@applibot.co.jp>",
+  "author": "heimusu <heimusu@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "node app"
